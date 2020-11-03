@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/bookFragment">
+
+    <fragment
+        android:id="@+id/bookFragment"
+        android:name="com.alimonapps.onlinelibrary.ui.book.BookFragment"
+        android:label="Books"
+        tools:layout="@layout/book_fragment" >
+        <action
+            android:id="@+id/action_bookFragment_to_audioFragment"
+            app:destination="@id/audioFragment" />
+        <action
+            android:id="@+id/action_bookFragment_to_discoverFragment"
+            app:destination="@id/discoverFragment" />
+        <action
+            android:id="@+id/action_bookFragment_to_bookDetailFragment"
+            app:destination="@id/bookDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/audioFragment"
+        android:name="com.alimonapps.onlinelibrary.ui.audio.AudioFragment"
+        android:label="Audio"
+        tools:layout="@layout/audio_fragment" >
+        <action
+            android:id="@+id/action_audioFragment_to_discoverFragment"
+            app:destination="@id/discoverFragment" />
+        <action
+            android:id="@+id/action_audioFragment_to_audioDetailFragment"
+            app:destination="@id/audioDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/discoverFragment"
+        android:name="com.alimonapps.onlinelibrary.ui.discover.DiscoverFragment"
+        android:label="Discover"
+        tools:layout="@layout/discover_fragment" >
+        <action
+            android:id="@+id/action_discoverFragment_to_bookSearchFragment"
+            app:destination="@id/bookSearchFragment" />
+        <action
+            android:id="@+id/action_discoverFragment_to_audioSearchFragment"
+            app:destination="@id/audioSearchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookDetailFragment"
+        android:name="com.alimonapps.onlinelibrary.ui.bookdetail.BookDetailFragment"
+        android:label="book_detail_fragment"
+        tools:layout="@layout/book_detail_fragment" >
+        <argument
+            android:name="bookData"
+            app:argType="com.alimonapps.onlinelibrary.datamodel.allbooks.VolumeInfo" />
+    </fragment>
+    <fragment
+        android:id="@+id/audioDetailFragment"
+        android:name="com.alimonapps.onlinelibrary.ui.audiodetail.AudioDetailFragment"
+        android:label="AudioDetailFragment" >
+        <argument
+            android:name="audioData"
+            app:argType="com.alimonapps.onlinelibrary.datamodel.bestpodcast.Podcast" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookSearchFragment"
+        android:name="com.alimonapps.onlinelibrary.ui.discover.BookSearchFragment"
+        android:label="book_search_fragment"
+        tools:layout="@layout/book_search_fragment" >
+        <action
+            android:id="@+id/action_bookSearchFragment_to_bookDetailFragment"
+            app:destination="@id/bookDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/audioSearchFragment"
+        android:name="com.alimonapps.onlinelibrary.ui.discover.AudioSearchFragment"
+        android:label="AudioSearchFragment" >
+        <action
+            android:id="@+id/action_audioSearchFragment_to_audioDetailFragment"
+            app:destination="@id/audioDetailFragment" />
+    </fragment>
+</navigation>

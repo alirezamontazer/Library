@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/audioFragment"
+        android:icon="@drawable/ic_sound_ic"
+        android:title="@string/audio" />
+
+    <item
+        android:id="@+id/bookFragment"
+        android:icon="@drawable/ic_book_ic"
+        android:title="@string/book" />
+
+
+    <item
+        android:id="@+id/discoverFragment"
+        android:icon="@drawable/ic_search_ic"
+        android:title="@string/discover" />
+
+
+</menu>
