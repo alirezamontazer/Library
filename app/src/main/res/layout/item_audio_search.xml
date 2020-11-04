@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="item"
-            type="com.alimonapps.onlinelibrary.datamodel.bestpodcast.Podcast" />
+            name="searchItem"
+            type="com.alimonapps.onlinelibrary.datamodel.searchaudio.Result" />
 
     </data>
 
@@ -28,7 +28,7 @@
                 android:layout_width="@dimen/_90sdp"
                 android:layout_height="@dimen/_120sdp"
                 android:scaleType="fitXY"
-                app:imageUrl="@{item.image}"
+                app:imageUrl="@{searchItem.image}"
                 tools:background="@drawable/img_background" />
 
 
@@ -38,7 +38,7 @@
         <TextView
             android:id="@+id/tv_title"
             style="@style/title_item_text_style"
-            android:text="@{item.title}"
+            android:text="@{searchItem.titleOriginal}"
             app:layout_constraintStart_toEndOf="@id/img_card"
             app:layout_constraintTop_toTopOf="@id/img_card"
             tools:text="Title" />
@@ -46,16 +46,24 @@
         <TextView
             android:id="@+id/tv_publisher"
             style="@style/author_text_style"
-            android:text="@{item.publisher}"
+            android:text="@{searchItem.publisherOriginal}"
             app:layout_constraintStart_toStartOf="@id/tv_title"
             app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
         <TextView
-            android:id="@+id/tv_language"
+            android:id="@+id/tv_totalEpisodes"
             style="@style/date_text_style"
-            android:text="@{item.language}"
+            android:text="@{searchItem.totalEpisodes.toString()}"
+            app:layout_constraintStart_toEndOf="@id/textView"
+            app:layout_constraintTop_toBottomOf="@id/tv_publisher" />
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/date_text_style"
+            android:text="@string/total_episodes"
             app:layout_constraintStart_toStartOf="@id/tv_title"
             app:layout_constraintTop_toBottomOf="@id/tv_publisher" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

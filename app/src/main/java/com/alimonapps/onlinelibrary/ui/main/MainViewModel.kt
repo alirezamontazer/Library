@@ -10,6 +10,5 @@ import com.alimonapps.onlinelibrary.remote.errorhandling.Resource
 
 class MainViewModel(private val sharedPrefs: SharedPrefs) : ViewModel() {
 
-    val isSearchAudio = MutableLiveData<Boolean>(false)
 
 }

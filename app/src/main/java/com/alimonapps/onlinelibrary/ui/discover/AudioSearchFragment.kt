@@ -10,12 +10,15 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.alimonapps.onlinelibrary.R
 import com.alimonapps.onlinelibrary.databinding.AudioSearchFragmentBinding
 import com.alimonapps.onlinelibrary.datamodel.searchaudio.ResponseAudioSearch
 import com.alimonapps.onlinelibrary.remote.errorhandling.Status
 import com.alimonapps.onlinelibrary.ui.audio.AudioListItem
 import com.alimonapps.onlinelibrary.ui.main.MainViewModel
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.GroupieViewHolder
 import org.koin.android.ext.android.bind
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -25,6 +28,7 @@ class AudioSearchFragment : Fragment() {
     private val viewModel: AudioSearchViewModel by viewModel()
     private val sharedViewModel: MainViewModel by sharedViewModel()
     private lateinit var binding: AudioSearchFragmentBinding
+    private val adapter = GroupAdapter<GroupieViewHolder>()
 
 
     override fun onCreateView(
@@ -74,13 +78,20 @@ class AudioSearchFragment : Fragment() {
 
     private fun initRecycler(responseAudioSearch: ResponseAudioSearch?) {
         val audioList = responseAudioSearch?.results
-        sharedViewModel.isSearchAudio.value = true
         val audioListItem = audioList?.map {
-            AudioListItem(it){
-
+            AudioSearchItem(it) { item ->
+                findNavController().navigate(
+                    DiscoverFragmentDirections.actionDiscoverFragmentToAudioDetailFragment(
+                        null,
+                        item
+                    )
+                )
             }
         }
-
+        if (audioListItem != null) {
+            adapter.addAll(audioListItem)
+            binding.rcAudio.adapter = adapter
+        }
     }
 
 

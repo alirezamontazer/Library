@@ -51,7 +51,7 @@ class AudioFragment : Fragment() {
             AudioListItem(it) { item ->
                 findNavController().navigate(
                     AudioFragmentDirections.actionAudioFragmentToAudioDetailFragment(
-                        item
+                        item,null
                     )
                 )
 

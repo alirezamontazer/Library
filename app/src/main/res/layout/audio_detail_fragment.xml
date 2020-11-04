@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                app:imageUrl="@{viewModel.audioData.image}" />
+                app:imageUrl="@{viewModel.isSearchData() ? viewModel.searchAudioData.image : viewModel.audioData.image}" />
 
         </RelativeLayout>
 
@@ -61,7 +61,7 @@
         <TextView
             android:id="@+id/tv_title"
             style="@style/details_title_style"
-            android:text="@{viewModel.audioData.title}"
+            android:text="@{viewModel.isSearchData() ? viewModel.searchAudioData.titleOriginal : viewModel.audioData.title}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_more_info"
@@ -70,7 +70,7 @@
         <TextView
             android:id="@+id/tv_country"
             style="@style/details_text_style"
-            android:text="@{viewModel.audioData.country}"
+            android:text='@{viewModel.isSearchData() ? "" : viewModel.audioData.country}'
             app:layout_constraintEnd_toEndOf="@id/tv_title"
             app:layout_constraintStart_toStartOf="@id/tv_title"
             app:layout_constraintTop_toBottomOf="@id/tv_title"
@@ -89,7 +89,7 @@
             android:id="@+id/tv_publisher"
             style="@style/details_text_style"
             android:layout_marginStart="@dimen/_5sdp"
-            android:text="@{viewModel.audioData.publisher}"
+            android:text="@{viewModel.isSearchData() ? viewModel.searchAudioData.publisherOriginal : viewModel.audioData.publisher}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/textView_publisher"
             app:layout_constraintTop_toBottomOf="@id/tv_country"
@@ -108,7 +108,7 @@
             android:id="@+id/tv_total_episodes"
             style="@style/details_text_style"
             android:layout_marginStart="@dimen/_5sdp"
-            android:text="@{viewModel.audioData.totalEpisodes.toString()}"
+            android:text="@{viewModel.isSearchData() ? viewModel.searchAudioData.totalEpisodes.toString() : viewModel.audioData.totalEpisodes.toString()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/textView_totalEpisode"
             app:layout_constraintTop_toBottomOf="@id/textView_publisher"
@@ -127,7 +127,7 @@
             android:id="@+id/tv_language"
             style="@style/details_text_style"
             android:layout_marginStart="@dimen/_5sdp"
-            android:text="@{viewModel.audioData.language}"
+            android:text='@{viewModel.isSearchData() ? "N/A" : viewModel.audioData.language}'
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/textView_language"
             app:layout_constraintTop_toBottomOf="@id/textView_totalEpisode"
@@ -136,7 +136,7 @@
         <TextView
             android:id="@+id/tv_description"
             style="@style/details_description_text_style"
-            android:text="@{viewModel.audioData.description}"
+            android:text="@{viewModel.isSearchData() ? viewModel.searchAudioData.descriptionOriginal : viewModel.audioData.description}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

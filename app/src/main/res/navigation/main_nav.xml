@@ -65,7 +65,12 @@
         android:label="AudioDetailFragment" >
         <argument
             android:name="audioData"
-            app:argType="com.alimonapps.onlinelibrary.datamodel.bestpodcast.Podcast" />
+            app:argType="com.alimonapps.onlinelibrary.datamodel.bestpodcast.Podcast"
+            app:nullable="true" />
+        <argument
+            android:name="searchAudioData"
+            app:argType="com.alimonapps.onlinelibrary.datamodel.searchaudio.Result"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/bookSearchFragment"

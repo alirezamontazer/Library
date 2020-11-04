@@ -38,8 +38,16 @@ class AudioDetailFragment : Fragment() {
 
     private fun clickOnMoreInfo() {
         binding.btnMoreInfo.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(viewModel.audioData.value?.website))
-            startActivity(intent)
+            if (viewModel.isSearchData.value == true) {
+                val intent =
+                    Intent(Intent.ACTION_VIEW, Uri.parse(viewModel.searchAudioData.value?.website))
+                startActivity(intent)
+            } else {
+                val intent =
+                    Intent(Intent.ACTION_VIEW, Uri.parse(viewModel.audioData.value?.website))
+                startActivity(intent)
+            }
+
         }
 
     }
@@ -47,6 +55,13 @@ class AudioDetailFragment : Fragment() {
     private fun loadData() {
         val bundle = arguments?.let { AudioDetailFragmentArgs.fromBundle(it) }
         viewModel.audioData.value = bundle?.audioData
+        viewModel.searchAudioData.value = bundle?.searchAudioData
+        if (viewModel.searchAudioData.value != null) {
+            viewModel.isSearchData.value = true
+        }
+        if (viewModel.audioData.value != null) {
+            viewModel.isSearchData.value = false
+        }
     }
 
 
