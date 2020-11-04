@@ -51,6 +51,6 @@ val viewModelModule = module(override = true) {
     viewModel { AudioViewModel(get(), get()) }
     viewModel { AudioDetailViewModel(get(), get()) }
     viewModel { DiscoverViewModel() }
-    viewModel { AudioSearchViewModel() }
-    viewModel { BookSearchViewModel(get(), get(named("book"))) }
+    viewModel { AudioSearchViewModel(get(), get(named("audio")), get()) }
+    viewModel { BookSearchViewModel(get(), get(named("book")), get()) }
 }

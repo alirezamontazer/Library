@@ -54,6 +54,7 @@
 
 
             <ImageView
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:id="@+id/img_search"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_25sdp"

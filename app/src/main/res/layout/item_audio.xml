@@ -9,6 +9,14 @@
             name="item"
             type="com.alimonapps.onlinelibrary.datamodel.bestpodcast.Podcast" />
 
+        <variable
+            name="sharedViewModel"
+            type="com.alimonapps.onlinelibrary.ui.main.MainViewModel" />
+
+        <variable
+            name="searchItem"
+            type="com.alimonapps.onlinelibrary.datamodel.searchaudio.Result" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

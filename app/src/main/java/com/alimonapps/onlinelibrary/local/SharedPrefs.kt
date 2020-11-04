@@ -13,6 +13,20 @@ class SharedPrefs(
     companion object {
         private const val BOOKS_DATA = "books_data"
         private const val AUDIO_DATA = "audio_data"
+        private const val BOOK_DATA_SEARCH = "book_data_search"
+        private const val AUDIO_DATA_SEARCH = "audio_data_search"
+    }
+
+    fun saveBookSearch(responseAllBooks: ResponseAllBooks) {
+        val json = moshi.adapter(ResponseAllBooks::class.java).toJson(responseAllBooks)
+        putString(BOOK_DATA_SEARCH, json)
+    }
+
+    fun loadBookSearch(): ResponseAllBooks? {
+        if (getString(BOOK_DATA_SEARCH).isNotEmpty()) {
+            return moshi.adapter(ResponseAllBooks::class.java).fromJson(getString(BOOK_DATA_SEARCH))
+        }
+        return null
     }
 
     fun saveBooksData(responseAllBooks: ResponseAllBooks) {

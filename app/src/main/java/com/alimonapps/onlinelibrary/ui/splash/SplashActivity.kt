@@ -19,7 +19,6 @@ class SplashActivity : AppCompatActivity() {
 
     lateinit var binding: ActivitySplashBinding
     private val viewModel by viewModel<SplashViewModel>()
-    private val TAG = "SplashActivity"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

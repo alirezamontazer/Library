@@ -1,11 +1,13 @@
 package com.alimonapps.onlinelibrary.ui.discover
 
+import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -38,20 +40,40 @@ class BookSearchFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         //functions
+        observeLiveData()
         clickOnSearchBtn()
 
 
         return binding.root
     }
 
+    private fun observeLiveData() {
+
+        viewModel.responseLoadBookSearch.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+                initRecycler(it)
+            }
+        })
+
+    }
+
+
     private fun clickOnSearchBtn() {
         binding.imgSearch.setOnClickListener {
 
             viewModel.searchInput.value.let {
                 if (it != null && it.isNotEmpty()) {
+
+                    //hide keyboard
+                    val inputManager =
+                        requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    inputManager.hideSoftInputFromWindow(binding.edtSearch.windowToken, 0)
+
                     viewModel.getSearchResult(str = it)
                     viewModel.responseSearch.observe(viewLifecycleOwner, Observer { item ->
+
                         if (item.status == Status.SUCCESS) {
+                            viewModel.saveBooksData(item.data!!)
                             initRecycler(item.data)
                         } else {
                             Toast.makeText(requireContext(), item.message, Toast.LENGTH_SHORT)
@@ -68,13 +90,15 @@ class BookSearchFragment : Fragment() {
         val bookListItem = bookList?.map {
             BookListItem(it) { item ->
                 findNavController().navigate(
-                    BookSearchFragmentDirections.actionBookSearchFragmentToBookDetailFragment(
+                    DiscoverFragmentDirections.actionDiscoverFragmentToBookDetailFragment(
                         item
                     )
                 )
+
             }
         }
         if (bookListItem != null) {
+            adapter.clear()
             adapter.addAll(bookListItem)
             binding.rcBook.adapter = adapter
         }

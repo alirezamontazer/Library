@@ -43,6 +43,12 @@
         <action
             android:id="@+id/action_discoverFragment_to_audioSearchFragment"
             app:destination="@id/audioSearchFragment" />
+        <action
+            android:id="@+id/action_discoverFragment_to_bookDetailFragment"
+            app:destination="@id/bookDetailFragment" />
+        <action
+            android:id="@+id/action_discoverFragment_to_audioDetailFragment"
+            app:destination="@id/audioDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/bookDetailFragment"

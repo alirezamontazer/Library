@@ -5,22 +5,109 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.alimonapps.onlinelibrary.ui.discover.AudioSearchViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/primaryColor"
         tools:context=".ui.discover.AudioSearchFragment">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello"
-            android:textSize="@dimen/_50sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_190sdp"
+            android:background="@color/secondaryColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/searchContainer_word"
+            style="@style/searchStyle"
+            android:layout_marginTop="@dimen/_28sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/edt_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_toStartOf="@+id/img_search"
+                android:background="@null"
+                android:hint="@string/type_a_word"
+                android:inputType="text"
+                android:maxLines="1"
+                android:text="@={viewModel.inputText}"
+                android:textColor="@color/primaryTextColor"
+                android:textColorHint="@color/primaryTextColor"
+                android:textSize="@dimen/_12ssp" />
+
+
+            <ImageView
+                android:id="@+id/img_search"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_search" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/searchContainer_type"
+            style="@style/searchStyle"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchContainer_word">
+
+            <Spinner
+                android:id="@+id/spinner_type"
+                style="@style/spinner_style"
+                android:entries="@array/type_array"
+                android:onItemSelected="@{(parent, view, selection, id) -> viewModel.setTypeSelected(selection)}" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/searchContainer_language"
+            style="@style/searchStyle"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchContainer_type">
+
+            <Spinner
+                android:id="@+id/spinner_language"
+                style="@style/spinner_style"
+                android:entries="@array/language_array"
+                android:onItemSelected="@{(parent, view, selection, id) -> viewModel.setLanguageSelected(selection)}" />
+
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rc_audio"
+            style="@style/main_recycler_style"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageView" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

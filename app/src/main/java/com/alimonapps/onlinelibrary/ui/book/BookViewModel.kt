@@ -14,16 +14,13 @@ class BookViewModel(
     private val sharedPrefs: SharedPrefs
 ) : BaseViewModel(app) {
 
-    private val TAG = "BookViewModel"
     val responseBookData = MutableLiveData<ResponseAllBooks>()
 
 
     fun loadBookData() {
         sharedPrefs.loadBooksData().let {
             responseBookData.value = it
-            Log.i(TAG, "loadBookData: ${responseBookData.value.toString()}")
         }
     }
-
 
 }
