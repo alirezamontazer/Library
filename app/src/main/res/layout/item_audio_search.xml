@@ -29,7 +29,7 @@
                 android:layout_height="@dimen/_120sdp"
                 android:scaleType="fitXY"
                 app:imageUrl="@{searchItem.image}"
-                tools:background="@drawable/img_background" />
+                tools:background="@drawable/background_image" />
 
 
         </androidx.cardview.widget.CardView>

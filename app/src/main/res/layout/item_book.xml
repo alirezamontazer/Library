@@ -29,7 +29,7 @@
                 android:layout_height="@dimen/_120sdp"
                 android:scaleType="fitXY"
                 app:imageUrl="@{item.imageLinks.thumbnail}"
-                tools:background="@drawable/img_background" />
+                tools:background="@drawable/background_image" />
 
 
         </androidx.cardview.widget.CardView>
@@ -41,8 +41,7 @@
             android:text="@{item.title}"
             app:layout_constraintStart_toEndOf="@id/img_card"
             app:layout_constraintTop_toTopOf="@id/img_card"
-            tools:text="Title"
-            />
+            tools:text="Title" />
 
         <TextView
             android:id="@+id/tv_author"

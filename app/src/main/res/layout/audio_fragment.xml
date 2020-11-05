@@ -20,19 +20,21 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_130sdp"
-            android:background="@color/secondaryColor"
+            android:layout_height="@dimen/_122sdp"
+            android:background="@drawable/navigation_border"
+            android:elevation="@dimen/_8sdp"
+            android:src="@drawable/main_podcast"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView"
-            style="@style/header_text_style"
-            android:text="@string/audio"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
+        <!--        <TextView-->
+        <!--            android:id="@+id/textView"-->
+        <!--            style="@style/header_text_style"-->
+        <!--            android:text="@string/audio"-->
+        <!--            app:layout_constraintBottom_toBottomOf="@+id/imageView"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="@+id/imageView" />-->
 
         <TextView
             android:id="@+id/tv_suggested_books"

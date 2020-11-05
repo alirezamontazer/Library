@@ -55,7 +55,7 @@
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_50sdp"
-            android:background="@drawable/navigation_border"
+            android:background="@drawable/navigation_border_up"
             android:theme="@style/BottomNavigationTheme"
             app:labelVisibilityMode="labeled"
             app:layout_constraintBottom_toBottomOf="parent"
