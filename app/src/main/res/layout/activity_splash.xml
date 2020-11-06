@@ -37,7 +37,7 @@
             android:layout_marginBottom="@dimen/_5sdp"
             android:text="@string/alimonapps"
             android:textSize="@dimen/_11ssp"
-            android:textStyle="bold"
+            android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
