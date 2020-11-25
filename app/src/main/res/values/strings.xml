@@ -1,4 +1,7 @@
 <resources>
+    <string name="static_shortcut_label_short">New Donut</string>
+    <string name="static_shortcut_label_long">Create New Donut</string>
+    <string name="static_shortcut_disabled_message">New Donut Shortcut Disabled</string>
     <string name="app_name">OnlineLibrary</string>
     <string name="alimonapps">AlimonApps</string>
     <string name="connection_problem">connection problem</string>

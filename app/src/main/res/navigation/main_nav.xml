@@ -36,7 +36,7 @@
         android:id="@+id/discoverFragment"
         android:name="com.alimonapps.onlinelibrary.ui.discover.DiscoverFragment"
         android:label="Discover"
-        tools:layout="@layout/discover_fragment" >
+        tools:layout="@layout/discover_fragment">
         <action
             android:id="@+id/action_discoverFragment_to_bookSearchFragment"
             app:destination="@id/bookSearchFragment" />
@@ -49,6 +49,9 @@
         <action
             android:id="@+id/action_discoverFragment_to_audioDetailFragment"
             app:destination="@id/audioDetailFragment" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="https://www.alimonapps.com" />
     </fragment>
     <fragment
         android:id="@+id/bookDetailFragment"
