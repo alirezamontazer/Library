@@ -1,13 +1,14 @@
 package com.alimonapps.onlinelibrary.remote
 
-import android.util.Log
 import com.alimonapps.onlinelibrary.datamodel.allbooks.ResponseAllBooks
 import com.alimonapps.onlinelibrary.datamodel.bestpodcast.ResponseBestPodcast
 import com.alimonapps.onlinelibrary.datamodel.searchaudio.ResponseAudioSearch
 import com.alimonapps.onlinelibrary.remote.errorhandling.Resource
 import com.alimonapps.onlinelibrary.remote.errorhandling.ResponseHandler
 
-class ApiRepository(
+
+class ApiRepository
+constructor(
     private val apiService: ApiService,
     private val responseHandler: ResponseHandler
 ) {

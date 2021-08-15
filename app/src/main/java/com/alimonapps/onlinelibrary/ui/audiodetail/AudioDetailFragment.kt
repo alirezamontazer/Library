@@ -8,23 +8,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.alimonapps.onlinelibrary.R
 import com.alimonapps.onlinelibrary.databinding.AudioDetailFragmentBinding
 import com.alimonapps.onlinelibrary.ui.main.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@ExperimentalCoroutinesApi
+@AndroidEntryPoint
 class AudioDetailFragment : Fragment() {
 
-    private val viewModel: AudioDetailViewModel by viewModel()
-    private val sharedViewModel: MainViewModel by sharedViewModel()
+    private val viewModel: AudioDetailViewModel by viewModels()
     private lateinit var binding: AudioDetailFragmentBinding
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = AudioDetailFragmentBinding.inflate(inflater)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner

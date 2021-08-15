@@ -1,21 +1,27 @@
 package com.alimonapps.onlinelibrary.ui.splash
 
-import android.util.Log
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.alimonapps.onlinelibrary.datamodel.allbooks.ResponseAllBooks
 import com.alimonapps.onlinelibrary.datamodel.bestpodcast.ResponseBestPodcast
+import com.alimonapps.onlinelibrary.di.hiltmodules.Audio
+import com.alimonapps.onlinelibrary.di.hiltmodules.Book
 import com.alimonapps.onlinelibrary.local.SharedPrefs
 import com.alimonapps.onlinelibrary.remote.ApiRepository
 import com.alimonapps.onlinelibrary.remote.errorhandling.Resource
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class SplashViewModel(
-    private val audioApiRepository: ApiRepository,
-    private val bookApiRepository: ApiRepository,
+@ExperimentalCoroutinesApi
+class SplashViewModel
+@ViewModelInject
+constructor(
+    @Audio private val audioApiRepository: ApiRepository,
+    @Book private val bookApiRepository: ApiRepository,
     private val sharedPrefs: SharedPrefs
 ) : ViewModel() {
 

@@ -10,6 +10,6 @@ fun provideSharedPreferences(context: Context): SharedPreferences? {
     return context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
 }
 
-fun provideSharedPrefs(sharedPreferences: SharedPreferences, moshi: Moshi): SharedPrefs? {
+fun provideSharedPrefs(sharedPreferences: SharedPreferences, moshi: Moshi): SharedPrefs {
     return SharedPrefs(sharedPreferences, moshi)
 }

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.alimonapps.onlinelibrary.R
@@ -19,22 +20,24 @@ import com.alimonapps.onlinelibrary.ui.audio.AudioListItem
 import com.alimonapps.onlinelibrary.ui.main.MainViewModel
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.bind
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@ExperimentalCoroutinesApi
+@AndroidEntryPoint
 class AudioSearchFragment : Fragment() {
 
-    private val viewModel: AudioSearchViewModel by viewModel()
-    private val sharedViewModel: MainViewModel by sharedViewModel()
+    private val viewModel: AudioSearchViewModel by viewModels()
     private lateinit var binding: AudioSearchFragmentBinding
     private val adapter = GroupAdapter<GroupieViewHolder>()
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = AudioSearchFragmentBinding.inflate(inflater)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner

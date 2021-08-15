@@ -6,16 +6,22 @@ import androidx.lifecycle.viewModelScope
 import com.alimonapps.onlinelibrary.R
 import com.alimonapps.onlinelibrary.baseclasses.BaseViewModel
 import com.alimonapps.onlinelibrary.datamodel.searchaudio.ResponseAudioSearch
-import com.alimonapps.onlinelibrary.local.SharedPrefs
+import com.alimonapps.onlinelibrary.di.hiltmodules.Audio
 import com.alimonapps.onlinelibrary.remote.ApiRepository
 import com.alimonapps.onlinelibrary.remote.errorhandling.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class AudioSearchViewModel(
-    private val app: Application,
-    private val apiRepository: ApiRepository,
-    private val sharedPrefs: SharedPrefs
+@ExperimentalCoroutinesApi
+@HiltViewModel
+class AudioSearchViewModel
+@Inject
+constructor(
+    app: Application,
+    @Audio private val apiRepository: ApiRepository
 ) : BaseViewModel(app) {
 
     private val typeArray = app.resources.getStringArray(R.array.type_array)

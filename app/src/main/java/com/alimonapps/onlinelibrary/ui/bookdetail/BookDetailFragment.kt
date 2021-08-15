@@ -8,24 +8,28 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.alimonapps.onlinelibrary.R
 import com.alimonapps.onlinelibrary.databinding.BookDetailFragmentBinding
 import com.alimonapps.onlinelibrary.ui.main.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.bind
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@ExperimentalCoroutinesApi
+@AndroidEntryPoint
 class BookDetailFragment : Fragment() {
 
-    private val viewModel: BookDetailViewModel by viewModel()
-    private val sharedViewModel: MainViewModel by sharedViewModel()
+    private val viewModel: BookDetailViewModel by viewModels()
     private lateinit var binding: BookDetailFragmentBinding
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = BookDetailFragmentBinding.inflate(inflater)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner

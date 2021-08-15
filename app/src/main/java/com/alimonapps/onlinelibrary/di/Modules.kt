@@ -16,41 +16,40 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-val storeModules = module(override = true) {
-    single { provideSharedPreferences(get()) }
-    single { provideSharedPrefs(get(), get()) }
-}
+//val storeModules = module(override = true) {
+//    single { provideSharedPreferences(get()) }
+//    single { provideSharedPrefs(get(), get()) }
+//}
+//
+//
+//val networkModule = module(override = true) {
+//
+//    single { provideOkhttp(get()) }
+//    single { provideMoshi() }
+//    single { provideLoggingInterceptor() }
+//
+//    single(named("book")) { provideBookRetrofit(get(), get()) }
+//    single(named("audio")) { provideAudioRetrofit(get(), get()) }
+//
+//    single(named("book")) { provideApiService(get((named("book")))) }
+//    single(named("audio")) { provideApiService(get((named("audio")))) }
+//
+//    single(named("book")) { ApiRepository(get(named("book")), get()) }
+//    single(named("audio")) { ApiRepository(get(named("audio")), get()) }
+//
+//    factory { ResponseHandler(androidContext(), get()) }
+//
+//}
 
 
-val networkModule = module(override = true) {
-
-    single { provideOkhttp(get()) }
-
-    single(named("book")) { provideApiService(get((named("book")))) }
-    single(named("audio")) { provideApiService(get((named("audio")))) }
-
-    single { provideLoggingInterceptor() }
-
-    single(named("book")) { provideBookRetrofit(get(), get()) }
-    single(named("audio")) { provideAudioRetrofit(get(), get()) }
-
-    single(named("book")) { ApiRepository(get(named("book")), get()) }
-    single(named("audio")) { ApiRepository(get(named("audio")), get()) }
-
-    single { provideMoshi() }
-    factory { ResponseHandler(androidContext(), get()) }
-
-}
-
-
-val viewModelModule = module(override = true) {
-    single { SplashViewModel(get(named("audio")), get(named("book")), get()) }
-    single { MainViewModel(get()) }
-    viewModel { BookViewModel(get(), get()) }
-    viewModel { BookDetailViewModel(get(), get()) }
-    viewModel { AudioViewModel(get(), get()) }
-    viewModel { AudioDetailViewModel(get(), get()) }
-    viewModel { DiscoverViewModel() }
-    viewModel { AudioSearchViewModel(get(), get(named("audio")), get()) }
-    viewModel { BookSearchViewModel(get(), get(named("book")), get()) }
-}
+//val viewModelModule = module(override = true) {
+//    single { SplashViewModel(get(named("audio")), get(named("book")), get()) }
+//    single { MainViewModel(get()) }
+//    viewModel { BookViewModel(get(), get()) }
+//    viewModel { BookDetailViewModel(get(), get()) }
+//    viewModel { AudioViewModel(get(), get()) }
+//    viewModel { AudioDetailViewModel(get(), get()) }
+//    viewModel { DiscoverViewModel() }
+//    viewModel { AudioSearchViewModel(get(), get(named("audio")), get()) }
+//    viewModel { BookSearchViewModel(get(), get(named("book")), get()) }
+//}

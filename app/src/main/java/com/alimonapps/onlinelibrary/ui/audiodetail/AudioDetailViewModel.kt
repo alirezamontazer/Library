@@ -1,14 +1,20 @@
 package com.alimonapps.onlinelibrary.ui.audiodetail
 
 import android.app.Application
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.alimonapps.onlinelibrary.baseclasses.BaseViewModel
 import com.alimonapps.onlinelibrary.datamodel.bestpodcast.Podcast
 import com.alimonapps.onlinelibrary.datamodel.searchaudio.Result
-import com.alimonapps.onlinelibrary.local.SharedPrefs
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import javax.inject.Inject
 
-class AudioDetailViewModel(app: Application, private val sharedPrefs: SharedPrefs) :
+@ExperimentalCoroutinesApi
+@HiltViewModel
+class AudioDetailViewModel
+@Inject
+constructor(app: Application) :
     BaseViewModel(app) {
 
     val audioData = MutableLiveData<Podcast>()

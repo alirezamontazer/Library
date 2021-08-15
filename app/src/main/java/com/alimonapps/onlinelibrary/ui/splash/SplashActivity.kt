@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.alimonapps.onlinelibrary.R
@@ -12,13 +13,17 @@ import com.alimonapps.onlinelibrary.databinding.ActivitySplashBinding
 import com.alimonapps.onlinelibrary.remote.errorhandling.Status
 import com.alimonapps.onlinelibrary.ui.main.MainActivity
 import com.alimonapps.onlinelibrary.zipLiveData
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
+@ExperimentalCoroutinesApi
+@AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
 
     lateinit var binding: ActivitySplashBinding
-    private val viewModel by viewModel<SplashViewModel>()
+    private val viewModel: SplashViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -8,7 +8,7 @@ import com.alimonapps.onlinelibrary.livedatahandler.Event
 import com.alimonapps.onlinelibrary.local.SharedPrefs
 import com.alimonapps.onlinelibrary.remote.errorhandling.Resource
 
-class MainViewModel(private val sharedPrefs: SharedPrefs) : ViewModel() {
+class MainViewModel() : ViewModel() {
 
 
 }

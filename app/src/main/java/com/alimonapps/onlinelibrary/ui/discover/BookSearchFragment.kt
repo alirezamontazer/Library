@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.alimonapps.onlinelibrary.R
@@ -20,13 +21,16 @@ import com.alimonapps.onlinelibrary.ui.book.BookListItem
 import com.alimonapps.onlinelibrary.ui.main.MainViewModel
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@ExperimentalCoroutinesApi
+@AndroidEntryPoint
 class BookSearchFragment : Fragment() {
 
-    private val viewModel: BookSearchViewModel by viewModel()
-    private val sharedViewModel: MainViewModel by sharedViewModel()
+    private val viewModel: BookSearchViewModel by viewModels()
     private val adapter = GroupAdapter<GroupieViewHolder>()
     private lateinit var binding: BookSearchFragmentBinding
 
@@ -34,7 +38,7 @@ class BookSearchFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = BookSearchFragmentBinding.inflate(inflater)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner

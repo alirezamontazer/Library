@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.alimonapps.onlinelibrary.databinding.AudioFragmentBinding
@@ -12,13 +13,17 @@ import com.alimonapps.onlinelibrary.datamodel.bestpodcast.ResponseBestPodcast
 import com.alimonapps.onlinelibrary.ui.main.MainViewModel
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@ExperimentalCoroutinesApi
+@AndroidEntryPoint
 class AudioFragment : Fragment() {
 
-    private val viewModel: AudioViewModel by viewModel()
-    private val shareViewModel: MainViewModel by sharedViewModel()
+    private val viewModel: AudioViewModel by viewModels()
     private val adapter = GroupAdapter<GroupieViewHolder>()
     private lateinit var binding: AudioFragmentBinding
 
@@ -26,7 +31,7 @@ class AudioFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = AudioFragmentBinding.inflate(inflater)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
@@ -51,7 +56,7 @@ class AudioFragment : Fragment() {
             AudioListItem(it) { item ->
                 findNavController().navigate(
                     AudioFragmentDirections.actionAudioFragmentToAudioDetailFragment(
-                        item,null
+                        item, null
                     )
                 )
 
