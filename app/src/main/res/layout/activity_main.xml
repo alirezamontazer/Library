@@ -11,41 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/primaryColor"
+        android:fitsSystemWindows="true"
         tools:context=".ui.main.MainActivity">
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/nested_scroll"
+        <fragment
+            android:id="@+id/fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            app:defaultNavHost="true"
             app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <fragment
-                    android:id="@+id/fragment"
-                    android:name="androidx.navigation.fragment.NavHostFragment"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:defaultNavHost="true"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:navGraph="@navigation/main_nav" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </androidx.core.widget.NestedScrollView>
-
+            app:layout_constraintTop_toTopOf="parent"
+            app:navGraph="@navigation/main_nav" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"
@@ -61,4 +40,6 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </layout>

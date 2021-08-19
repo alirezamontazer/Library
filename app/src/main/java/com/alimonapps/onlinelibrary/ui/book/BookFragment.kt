@@ -4,18 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.alimonapps.onlinelibrary.R
 import com.alimonapps.onlinelibrary.databinding.BookFragmentBinding
 import com.alimonapps.onlinelibrary.datamodel.allbooks.ResponseAllBooks
-import com.alimonapps.onlinelibrary.ui.main.MainViewModel
+import com.rhexgomez.typer.roboto.TyperRoboto
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+
 
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
@@ -34,11 +36,18 @@ class BookFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         //functions
+        setupCollapseToolbar()
         observeLiveData()
-
 
         return binding.root
 
+    }
+
+    private fun setupCollapseToolbar() {
+        binding.collapseToolbar.apply {
+            setExpandedTitleTextAppearance(R.style.ExpandedAppBar)
+            setCollapsedTitleTextAppearance(R.style.CollapsedAppBar)
+        }
     }
 
     private fun observeLiveData() {

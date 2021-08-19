@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.alimonapps.onlinelibrary.R
 import com.alimonapps.onlinelibrary.databinding.AudioFragmentBinding
 import com.alimonapps.onlinelibrary.datamodel.bestpodcast.ResponseBestPodcast
 import com.alimonapps.onlinelibrary.ui.main.MainViewModel
@@ -37,10 +38,18 @@ class AudioFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         //functions
+        setupCollapseToolbar()
         observeLiveData()
 
 
         return binding.root
+    }
+
+    private fun setupCollapseToolbar() {
+        binding.collapseToolbar.apply {
+            setExpandedTitleTextAppearance(R.style.ExpandedAppBar)
+            setCollapsedTitleTextAppearance(R.style.CollapsedAppBar)
+        }
     }
 
     private fun observeLiveData() {

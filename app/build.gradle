@@ -101,7 +101,8 @@ dependencies {
     implementation 'com.intuit.sdp:sdp-android:1.0.5'
     implementation 'com.google.android.material:material:1.5.0-alpha02'
     implementation 'com.airbnb.android:lottie:3.4.2'
-    implementation 'com.github.ome450901:SimpleRatingBar:1.5.0'
+    implementation 'com.rhexgomez.typer:typer-roboto:2.0.0'
+
 
 
     implementation('com.github.ihsanbal:LoggingInterceptor:3.1.0') {
