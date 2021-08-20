@@ -123,7 +123,7 @@
 
     <style name="spinner_style">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/_30sdp</item>
+        <item name="android:layout_height">@dimen/_35sdp</item>
         <item name="android:layout_alignParentStart">true</item>
         <item name="android:layout_alignParentEnd">true</item>
         <item name="android:layout_centerVertical">true</item>
