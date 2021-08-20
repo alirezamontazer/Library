@@ -25,7 +25,7 @@
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_180sdp"
+                android:layout_height="@dimen/_160sdp"
                 android:background="@drawable/navigation_border"
                 android:backgroundTint="@color/secondaryColor"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -71,38 +71,25 @@
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/searchContainer_type"
-                style="@style/spinner_container"
-                android:layout_marginTop="@dimen/_15sdp"
+            <Spinner
+                android:id="@+id/spinner_type"
+                style="@style/spinner_style"
+                android:layout_marginTop="10dp"
+                android:entries="@array/type_array"
+                android:onItemSelected="@{(parent, view, selection, id) -> viewModel.setTypeSelected(selection)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/searchContainer_word">
+                app:layout_constraintTop_toBottomOf="@id/searchContainer_word" />
 
-                <Spinner
-                    android:id="@+id/spinner_type"
-                    style="@style/spinner_style"
-                    android:entries="@array/type_array"
-                    android:onItemSelected="@{(parent, view, selection, id) -> viewModel.setTypeSelected(selection)}" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/searchContainer_language"
-                style="@style/spinner_container"
-                android:layout_marginTop="@dimen/_5sdp"
+            <Spinner
+                android:id="@+id/spinner_language"
+                style="@style/spinner_style"
+                android:layout_marginTop="5dp"
+                android:entries="@array/language_array"
+                android:onItemSelected="@{(parent, view, selection, id) -> viewModel.setLanguageSelected(selection)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/searchContainer_type">
-
-                <Spinner
-                    android:id="@+id/spinner_language"
-                    style="@style/spinner_style"
-                    android:entries="@array/language_array"
-                    android:onItemSelected="@{(parent, view, selection, id) -> viewModel.setLanguageSelected(selection)}" />
-
-
-            </RelativeLayout>
+                app:layout_constraintTop_toBottomOf="@id/spinner_type" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rc_audio"
