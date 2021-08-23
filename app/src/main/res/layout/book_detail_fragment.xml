@@ -11,184 +11,192 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/primaryColor"
         tools:context=".ui.bookdetail.BookDetailFragment">
 
-        <RelativeLayout
-            android:id="@+id/img_poster"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_250sdp"
-            android:background="@drawable/navigation_border"
-            android:backgroundTint="@color/secondaryColor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent"
+            android:background="@color/primaryColor">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                app:imageUrl="@{viewModel.bookData.imageLinks.thumbnail}" />
+            <RelativeLayout
+                android:id="@+id/img_poster"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_250sdp"
+                android:background="@drawable/navigation_border"
+                android:backgroundTint="@color/secondaryColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    app:imageUrl="@{viewModel.bookData.imageLinks.thumbnail}" />
 
 
-        </RelativeLayout>
+            </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/btn_more_info"
-            android:layout_width="@dimen/_60sdp"
-            android:layout_height="@dimen/_60sdp"
-            android:layout_marginTop="@dimen/_250sdp"
-            android:background="@drawable/info_button_shape"
-            android:elevation="@dimen/_8sdp"
-            app:layout_constraintBottom_toBottomOf="@id/img_poster"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            <RelativeLayout
+                android:id="@+id/btn_more_info"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_marginTop="@dimen/_250sdp"
+                android:background="@drawable/info_button_shape"
+                android:elevation="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="@id/img_poster"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:gravity="center"
+                    android:text="@string/more_information"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="@dimen/_10ssp" />
+
+            </RelativeLayout>
 
             <TextView
+                android:id="@+id/tv_title"
+                style="@style/details_title_style"
+                android:text="@{viewModel.bookData.title}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_more_info"
+                tools:text="Title" />
+
+            <TextView
+                android:id="@+id/tv_author"
+                style="@style/details_text_style"
+                android:text="@{viewModel.bookData.authors.get(0).toString()}"
+                app:layout_constraintEnd_toEndOf="@id/tv_title"
+                app:layout_constraintStart_toStartOf="@id/tv_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_title"
+                tools:text="author" />
+
+            <TextView
+                android:id="@+id/textView_publisher"
+                style="@style/details_text_style"
+                android:text="@string/publisher"
+                app:layout_constraintEnd_toStartOf="@id/tv_publisher"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_author" />
+
+            <TextView
+                android:id="@+id/tv_publisher"
+                style="@style/details_text_style"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:text="@{viewModel.bookData.publisher}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/textView_publisher"
+                app:layout_constraintTop_toBottomOf="@id/tv_author"
+                tools:text="publisher" />
+
+            <TextView
+                android:id="@+id/textView_publishDate"
+                style="@style/details_text_style"
+                android:text="@string/publish_date"
+                app:layout_constraintEnd_toStartOf="@id/tv_publish_date"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_publisher" />
+
+            <TextView
+                android:id="@+id/tv_publish_date"
+                style="@style/details_text_style"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:text="@{viewModel.bookData.publishedDate}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/textView_publishDate"
+                app:layout_constraintTop_toBottomOf="@id/textView_publisher"
+                tools:text="publish date" />
+
+            <TextView
+                android:id="@+id/textView_language"
+                style="@style/details_text_style"
+                android:text="@string/language"
+                app:layout_constraintEnd_toStartOf="@id/tv_language"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_publishDate" />
+
+            <TextView
+                android:id="@+id/tv_language"
+                style="@style/details_text_style"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:text="@{viewModel.bookData.language}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/textView_language"
+                app:layout_constraintTop_toBottomOf="@id/textView_publishDate"
+                tools:text="language" />
+
+            <TextView
+                android:id="@+id/textView_category"
+                style="@style/details_text_style"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:gravity="center"
-                android:text="@string/more_information"
-                android:textColor="@color/primaryTextColor"
-                android:textSize="@dimen/_10ssp" />
+                android:layout_height="wrap_content"
+                android:text="@string/category"
+                app:layout_constraintEnd_toStartOf="@id/tv_category"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_language" />
 
-        </RelativeLayout>
+            <TextView
+                android:id="@+id/tv_category"
+                style="@style/details_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:text="@{viewModel.bookData.categories.get(0).toString()}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/textView_category"
+                app:layout_constraintTop_toBottomOf="@id/textView_language"
+                tools:text="category" />
 
-        <TextView
-            android:id="@+id/tv_title"
-            style="@style/details_title_style"
-            android:text="@{viewModel.bookData.title}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_more_info"
-            tools:text="Title" />
+            <ImageView
+                android:id="@+id/img_star"
+                style="@style/img_star_style"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:src="@drawable/ic_star"
+                app:layout_constraintEnd_toStartOf="@id/tv_rating"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_category" />
 
-        <TextView
-            android:id="@+id/tv_author"
-            style="@style/details_text_style"
-            android:text="@{viewModel.bookData.authors.get(0).toString()}"
-            app:layout_constraintEnd_toEndOf="@id/tv_title"
-            app:layout_constraintStart_toStartOf="@id/tv_title"
-            app:layout_constraintTop_toBottomOf="@id/tv_title"
-            tools:text="author" />
+            <TextView
+                android:id="@+id/tv_rating"
+                style="@style/details_rating_number_style"
+                android:text='@{viewModel.bookData.averageRating==null ? "No Rating" : viewModel.bookData.averageRating.toString() }'
+                app:layout_constraintBottom_toBottomOf="@id/img_star"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img_star"
+                app:layout_constraintTop_toTopOf="@id/img_star"
+                tools:text="555" />
 
-        <TextView
-            android:id="@+id/textView_publisher"
-            style="@style/details_text_style"
-            android:text="@string/publisher"
-            app:layout_constraintEnd_toStartOf="@id/tv_publisher"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_author" />
-
-        <TextView
-            android:id="@+id/tv_publisher"
-            style="@style/details_text_style"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:text="@{viewModel.bookData.publisher}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/textView_publisher"
-            app:layout_constraintTop_toBottomOf="@id/tv_author"
-            tools:text="publisher" />
-
-        <TextView
-            android:id="@+id/textView_publishDate"
-            style="@style/details_text_style"
-            android:text="@string/publish_date"
-            app:layout_constraintEnd_toStartOf="@id/tv_publish_date"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_publisher" />
-
-        <TextView
-            android:id="@+id/tv_publish_date"
-            style="@style/details_text_style"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:text="@{viewModel.bookData.publishedDate}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/textView_publishDate"
-            app:layout_constraintTop_toBottomOf="@id/textView_publisher"
-            tools:text="publish date" />
-
-        <TextView
-            android:id="@+id/textView_language"
-            style="@style/details_text_style"
-            android:text="@string/language"
-            app:layout_constraintEnd_toStartOf="@id/tv_language"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_publishDate" />
-
-        <TextView
-            android:id="@+id/tv_language"
-            style="@style/details_text_style"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:text="@{viewModel.bookData.language}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/textView_language"
-            app:layout_constraintTop_toBottomOf="@id/textView_publishDate"
-            tools:text="language" />
-
-        <TextView
-            android:id="@+id/textView_category"
-            style="@style/details_text_style"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/category"
-            app:layout_constraintEnd_toStartOf="@id/tv_category"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_language" />
-
-        <TextView
-            android:id="@+id/tv_category"
-            style="@style/details_text_style"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:text="@{viewModel.bookData.categories.get(0).toString()}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/textView_category"
-            app:layout_constraintTop_toBottomOf="@id/textView_language"
-            tools:text="category" />
-
-        <ImageView
-            android:id="@+id/img_star"
-            style="@style/img_star_style"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:src="@drawable/ic_star"
-            app:layout_constraintEnd_toStartOf="@id/tv_rating"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_category" />
-
-        <TextView
-            android:id="@+id/tv_rating"
-            style="@style/details_rating_number_style"
-            android:text='@{viewModel.bookData.averageRating==null ? "No Rating" : viewModel.bookData.averageRating.toString() }'
-            app:layout_constraintBottom_toBottomOf="@id/img_star"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/img_star"
-            app:layout_constraintTop_toTopOf="@id/img_star"
-            tools:text="555" />
-
-        <TextView
-            android:id="@+id/tv_description"
-            style="@style/details_description_text_style"
-            android:text="@{viewModel.bookData.description}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/img_star"
-            app:layout_goneMarginTop="@dimen/_15sdp"
-            tools:text="description" />
+            <TextView
+                android:id="@+id/tv_description"
+                style="@style/details_description_text_style"
+                android:text="@{viewModel.bookData.description}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_star"
+                app:layout_goneMarginTop="@dimen/_15sdp"
+                tools:text="description" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
 </layout>

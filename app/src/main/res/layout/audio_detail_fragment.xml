@@ -11,140 +11,148 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/primaryColor"
         tools:context=".ui.audiodetail.AudioDetailFragment">
 
-        <RelativeLayout
-            android:id="@+id/img_poster"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_250sdp"
-            android:background="@drawable/navigation_border"
-            android:backgroundTint="@color/secondaryColor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent"
+            android:background="@color/primaryColor">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                app:imageUrl="@{viewModel.isSearchData() ? viewModel.searchAudioData.image : viewModel.audioData.image}" />
+            <RelativeLayout
+                android:id="@+id/img_poster"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_250sdp"
+                android:background="@drawable/navigation_border"
+                android:backgroundTint="@color/secondaryColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        </RelativeLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    app:imageUrl="@{viewModel.isSearchData() ? viewModel.searchAudioData.image : viewModel.audioData.image}" />
 
-        <RelativeLayout
-            android:id="@+id/btn_more_info"
-            android:layout_width="@dimen/_60sdp"
-            android:layout_height="@dimen/_60sdp"
-            android:layout_marginTop="@dimen/_250sdp"
-            android:background="@drawable/info_button_shape"
-            android:elevation="@dimen/_8sdp"
-            app:layout_constraintBottom_toBottomOf="@id/img_poster"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/btn_more_info"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_marginTop="@dimen/_250sdp"
+                android:background="@drawable/info_button_shape"
+                android:elevation="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="@id/img_poster"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:gravity="center"
+                    android:text="@string/more_information"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="@dimen/_10ssp" />
+
+            </RelativeLayout>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:gravity="center"
-                android:text="@string/more_information"
-                android:textColor="@color/primaryTextColor"
-                android:textSize="@dimen/_10ssp" />
+                android:id="@+id/tv_title"
+                style="@style/details_title_style"
+                android:text="@{viewModel.isSearchData() ? viewModel.searchAudioData.titleOriginal : viewModel.audioData.title}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_more_info"
+                tools:text="Title" />
 
-        </RelativeLayout>
+            <TextView
+                android:id="@+id/tv_country"
+                style="@style/details_text_style"
+                android:text='@{viewModel.isSearchData() ? "" : viewModel.audioData.country}'
+                app:layout_constraintEnd_toEndOf="@id/tv_title"
+                app:layout_constraintStart_toStartOf="@id/tv_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_title"
+                tools:text="author" />
 
-        <TextView
-            android:id="@+id/tv_title"
-            style="@style/details_title_style"
-            android:text="@{viewModel.isSearchData() ? viewModel.searchAudioData.titleOriginal : viewModel.audioData.title}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_more_info"
-            tools:text="Title" />
+            <TextView
+                android:id="@+id/textView_publisher"
+                style="@style/details_text_style"
+                android:text="@string/publisher"
+                app:layout_constraintEnd_toStartOf="@id/tv_publisher"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_country" />
 
-        <TextView
-            android:id="@+id/tv_country"
-            style="@style/details_text_style"
-            android:text='@{viewModel.isSearchData() ? "" : viewModel.audioData.country}'
-            app:layout_constraintEnd_toEndOf="@id/tv_title"
-            app:layout_constraintStart_toStartOf="@id/tv_title"
-            app:layout_constraintTop_toBottomOf="@id/tv_title"
-            tools:text="author" />
+            <TextView
+                android:id="@+id/tv_publisher"
+                style="@style/details_text_style"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:text="@{viewModel.isSearchData() ? viewModel.searchAudioData.publisherOriginal : viewModel.audioData.publisher}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/textView_publisher"
+                app:layout_constraintTop_toBottomOf="@id/tv_country"
+                tools:text="publisher" />
 
-        <TextView
-            android:id="@+id/textView_publisher"
-            style="@style/details_text_style"
-            android:text="@string/publisher"
-            app:layout_constraintEnd_toStartOf="@id/tv_publisher"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_country" />
+            <TextView
+                android:id="@+id/textView_totalEpisode"
+                style="@style/details_text_style"
+                android:text="@string/total_episodes"
+                app:layout_constraintEnd_toStartOf="@id/tv_total_episodes"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_publisher" />
 
-        <TextView
-            android:id="@+id/tv_publisher"
-            style="@style/details_text_style"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:text="@{viewModel.isSearchData() ? viewModel.searchAudioData.publisherOriginal : viewModel.audioData.publisher}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/textView_publisher"
-            app:layout_constraintTop_toBottomOf="@id/tv_country"
-            tools:text="publisher" />
+            <TextView
+                android:id="@+id/tv_total_episodes"
+                style="@style/details_text_style"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:text="@{viewModel.isSearchData() ? viewModel.searchAudioData.totalEpisodes.toString() : viewModel.audioData.totalEpisodes.toString()}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/textView_totalEpisode"
+                app:layout_constraintTop_toBottomOf="@id/textView_publisher"
+                tools:text="total episodes" />
 
-        <TextView
-            android:id="@+id/textView_totalEpisode"
-            style="@style/details_text_style"
-            android:text="@string/total_episodes"
-            app:layout_constraintEnd_toStartOf="@id/tv_total_episodes"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_publisher" />
+            <TextView
+                android:id="@+id/textView_language"
+                style="@style/details_text_style"
+                android:text="@string/language"
+                app:layout_constraintEnd_toStartOf="@id/tv_language"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_totalEpisode" />
 
-        <TextView
-            android:id="@+id/tv_total_episodes"
-            style="@style/details_text_style"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:text="@{viewModel.isSearchData() ? viewModel.searchAudioData.totalEpisodes.toString() : viewModel.audioData.totalEpisodes.toString()}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/textView_totalEpisode"
-            app:layout_constraintTop_toBottomOf="@id/textView_publisher"
-            tools:text="total episodes" />
+            <TextView
+                android:id="@+id/tv_language"
+                style="@style/details_text_style"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:text='@{viewModel.isSearchData() ? "N/A" : viewModel.audioData.language}'
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/textView_language"
+                app:layout_constraintTop_toBottomOf="@id/textView_totalEpisode"
+                tools:text="language" />
 
-        <TextView
-            android:id="@+id/textView_language"
-            style="@style/details_text_style"
-            android:text="@string/language"
-            app:layout_constraintEnd_toStartOf="@id/tv_language"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_totalEpisode" />
-
-        <TextView
-            android:id="@+id/tv_language"
-            style="@style/details_text_style"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:text='@{viewModel.isSearchData() ? "N/A" : viewModel.audioData.language}'
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/textView_language"
-            app:layout_constraintTop_toBottomOf="@id/textView_totalEpisode"
-            tools:text="language" />
-
-        <TextView
-            android:id="@+id/tv_description"
-            style="@style/details_description_text_style"
-            android:text="@{viewModel.isSearchData() ? viewModel.searchAudioData.descriptionOriginal : viewModel.audioData.description}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_language"
-            app:layout_goneMarginTop="@dimen/_15sdp"
-            tools:text="description" />
+            <TextView
+                android:id="@+id/tv_description"
+                style="@style/details_description_text_style"
+                android:text="@{viewModel.isSearchData() ? viewModel.searchAudioData.descriptionOriginal : viewModel.audioData.description}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_language"
+                app:layout_goneMarginTop="@dimen/_15sdp"
+                tools:text="description" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
 </layout>
